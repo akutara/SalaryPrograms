@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/btnonoff.css">
+    <link rel="stylesheet" href="css/assets.css">
+    <script src="js/readexcelfilemin.js"></script>
+  </head>
+  <body>
+    <header class="flex-c">
+      <div><img src="img/tama-icon.png" alt="" id="tama-icon"><div></div></div>
+      <div id="dialog" class="flex flex-ce">
+          <h2 class="fs-1-5" id="chatblog">Hello Welcome Back ...</h2>
+          <p class="fs-1" id="timenow">11:36</p>
+      </div>
+    </header>
+    <section id="template1" class="choose-excel">
+      <div id="step1">
+        <div id="nextstep-1">
+          <p>Salary's Main Menu</p>
+          <h2>Choose your program</h2>
+          <div class="">
+            <button class="btn selectprogram" id="">Gaji Toko</button>
+          </div>
+          <div class="mt-10">
+              <button class="btn selectprogram" id="">Gaji Pabrik</button>
+          </div>
+        </div>
+        <div id="nextstep-2" class="editnone">
+          <p>Wanna checking your salary ? </p>
+          <h2>Choose your file</h2>
+          <div class="upload-btn-wrapper">
+            <input type="file" id="file" name="myfile" accept="excel" />
+            <button class="btn" id="file-1"> <span>+</span> File 1</button>
+          </div>
+          <div class="upload-btn-wrapper">
+            <input type="file" id="file2" name="myfile" accept="excel" />
+            <button class="btn" id="file-2"> <span>+</span> File 2</button>
+          </div>
+          <div class="upload-btn-wrapper uploadedbtn">
+            <button class="btn" id="uploadfilenow"> Upload now</button>
+          </div>
+          <p> <span>*</span> Please insert file with format xlsx</p>
+        </div>
+      </div>
+    </section>
+    <section id="template2" class="">
+      <div id="step2"  class="flex">
+        <div id="left-side">
+          <div class="flex-sb mt-10"><h4>Salary Arrangement</h4><hr></div>
+          <div class="box-50"></div>
+          <div class="flex-sb">
+            <h5>Uang Lembur</h5>
+          </div>
+          <div class="flex">
+            <input type="number" class="input-style lemburd" value="10000">
+            <p>Rp</p>
+            <div></div>
+          </div>
+          <div class="flex-sb mt-30">
+            <h5>Pelanggaran</h5>
+          </div>
+          <div class="flex">
+            <input type="number" class="input-style pelanggarand" value="-10000">
+            <p>Rp</p>
+            <div></div>
+          </div>
+          <div class="flex-sb mt-30">
+            <h5>Telat Datang</h5>
+          </div>
+          <div class="flex">
+            <input type="number" class="input-style telatd" value="-10000">
+            <p>Rp</p>
+            <div></div>
+          </div>
+          <div class="flex-sb mt-30">
+            <h5>Bonus</h5>
+          </div>
+          <div class="flex">
+            <input type="number" class="input-style bonusd" value="50000">
+            <p>Rp</p>
+            <div></div>
+          </div>
+        </div>
+        <div class="sl"></div>
+        <div id="right-side">
+          <div id="stafflist">
+            <div class="lh1">
+              <p class="fs-1">Alright !</p>
+              <h2>This's the Result ~</h2><br>
+              <p class="fs-1"> <span id="getemploy">-</span> <span>Employee found</span> </p>
+            </div>
+            <div id="list-em" class="style-2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="checkdetail" class="flex-cc none">
+      <div class="nightmare"></div>
+      <div class="page-1">
+          <div class="mb-30">
+            <div class="flex-sb ">
+                <h2 class="detail-title">Detail User</h2>
+                <img src="img/close.svg" alt="" id="closemeok">
+            </div>
+            <br>
+            <div class="flex">
+              <h4 id="username">Wira </h4> &nbsp;&nbsp; <p>[ <span id="jobuser"></span> ]</p>
+            </div>
+          </div>
+        
+          <div class="p1">  
+            <div class="cd-item flex-sb">
+              <h4>Gaji Pokok</h4>
+              <div>
+                <input type="text" class="cd-style i-gaji" value="" id="a" onkeypress='validate(event)'>
+                <img src="img/edit.svg" alt="" class="icon-edit hiddenmepls">
+              </div>
+            </div>
+            <div class="cd-item flex-sb">
+              <h4>Kehadiran</h4>
+              <div>
+                <input type="text" class="cd-style i-kehadiran" value="" disabled onkeypress='validate(event)'>
+                <img src="img/edit.svg" alt="" class="icon-edit hiddenmepls">
+              </div>
+            </div>
+            <div class="cd-item">
+              <div class=" flex-sb">
+                  <h4>Tidak Hadir</h4>
+                  <div>
+                    <input type="text" class="cd-style i-tidakhadir" value="" disabled onkeypress='validate(event)'>
+                    <img src="img/edit.svg" alt="" class="icon-edit hiddenmepls">
+                  </div>
+              </div><br>
+              <div class=" flex-sb"> 
+                  <p class="fs-1">Pada Tgl <span class="noabsen"></span> </p>
+              </div>
+            </div>
+            <div class="cd-item flex-sb">
+              <h4>Mengambil Cuti</h4>
+              <div class="flex-cc">
+                <img src="img/minus.svg" alt="" class="icon-p1">
+                <input type="text" id="cuti" class="cd-style" value="0" disabled>
+                <img src="img/plus.svg" alt="" class="icon-p2 ">
+              </div>
+            </div>
+            <div class="cd-item flex-sb">
+              <h4>Telat</h4>
+              <div>
+                <input type="text" class="cd-style i-telat" value="" disabled onkeypress='validate(event)'>
+                <img src="img/edit.svg" alt="" class="icon-edit hiddenmepls">
+              </div>
+            </div>
+            <div class="cd-item flex-sb">
+              <h4>Pelanggaran</h4>
+              <div>
+                <input type="text" class="cd-style i-pelanggaran" value="" disabled  onkeypress='validate(event)'>
+                <img src="img/edit.svg" alt="" class="icon-edit hiddenmepls">
+              </div>
+            </div>
+            <div class="cd-item flex-sb">
+              <h4>Lembur</h4>
+              <div>
+                <input type="text" class="cd-style i-lembur" value="" disabled onkeypress='validate(event)'>
+                <img src="img/edit.svg" alt="" class="icon-edit hiddenmepls">
+              </div>
+            </div>
+            <div class="nextpage flex-sb"><i></i><button class="btn detail-btn" onclick="closepage('p1','p2')"><span>&#9654;</span>Detail Gaji</button></div>
+          </div>
+
+          <!-- Gaji Detail -->
+
+          <div class="p2 remove-page">  
+            <div class="cd-item flex-sb">
+              <h4>Gaji Pokok Bersih</h4>
+              <div>
+                <input type="text" class="cd-style i-gaji" value="0" disabled onkeypress='validate(event)'>
+                <img src="img/edit.svg" alt="" class="icon-edit-e ">
+              </div>
+            </div>
+            <div class="cd-item flex-sb">
+              <h4>Telat</h4>
+              <div>
+                <input type="text" class="cd-style i-telat" value="0" disabled onkeypress='validate(event)'>
+                <img src="img/edit.svg" alt="" class="icon-edit-e ">
+              </div>
+            </div>
+            <div class="cd-item flex-sb">
+              <h4>Pelanggaran</h4>
+              <div>
+                <input type="text" class="cd-style i-pelanggaran" value="0" disabled onkeypress='validate(event)'>
+                <img src="img/edit.svg" alt="" class="icon-edit-e ">
+              </div>
+            </div>
+            <div class="cd-item flex-sb">
+              <h4>Lembur</h4>
+              <div>
+                <input type="text" class="cd-style i-lembur" value="0" disabled onkeypress='validate(event)'>
+                <img src="img/edit.svg" alt="" class="icon-edit-e ">
+              </div> 
+            </div>
+            <div class="cd-item flex-sb">
+              <h4>Bonus</h4>
+              <div>
+                <input type="text" class="cd-style i-bonus" value="0" disabled onkeypress='validate(event)' data-bonus='false'>
+                <img src="img/edit.svg" alt="" class="icon-edit ">
+                <div class="editools flex-cc editnone">
+                  <div class="editbot" data-a='ok'></div>
+                  <div class="editbot"  data-a='cancel'></div>
+                </div>
+              </div>
+            </div>
+            <div class="cd-item flex-sb">
+              <h4>Bon Kas </h4>
+              <div>
+                <input type="text" class="cd-style i-bonkas" value="0" disabled onkeypress='validate(event)' data-minus='true'>
+                <img src="img/edit.svg" alt="" class="icon-edit " >
+                <div class="editools flex-cc editnone">
+                  <div class="editbot" data-a='ok'></div>
+                  <div class="editbot"  data-a='cancel'></div>
+                </div>
+              </div>
+            </div>
+            <div class="cd-item flex-sb">
+              <h4>Pelanggaran Lainnya </h4>
+              <div>
+                <input type="text" class="cd-style i-pelanggaranlain" value="0" disabled onkeypress='validate(event)' data-minus='true'>
+                <img src="img/edit.svg" alt="" class="icon-edit " >
+                <div class="editools flex-cc editnone">
+                  <div class="editbot" data-a='ok'></div>
+                  <div class="editbot"  data-a='cancel'></div>
+                </div>
+              </div>
+            </div>
+            <div id="total" class="flex-sb fs-3 "> <span></span>  <b><p> <span class="fs-07"> Total </span> <br> Rp. <span id="gajimu">2.000.000</span> </p></b>  </div>
+            <div class="nextpage flex-sb"><button class="btn detail-btn" onclick="closepage('p2','p1')"><span>&#9664;</span>Detail User</button><button class="btn slip-g"> <span>&#128209;</span> Slip Gaji</button></div>
+          </div>
+      </div>
+    </div>
+    <!-- SLIP GAJI DESIGN -->
+    <div id="slipgaji" class="flex-cc slipoff">
+      <div class="nightmare"></div>
+      <div class="page-3 flex-cc nopadding-2 flex-wrap" id="screenmeplz">
+        <div class="bg-white-all"></div>
+        <div class="flex-cc flex-ce pr30 pl30 w100 pb20" id="a1">
+          <div class="left w50">
+              <div class="flex-cc flex-wrap ">
+                <div class="w100 flex-cc">
+                  <img src="img/logo.jpg" alt="" id="logo">
+                </div>
+                <h3 class="mt-10">Slip Gaji Karyawan</h3>
+              </div>
+          </div>
+          <div class="right w50">
+            <div class="flex-cc flex-wrap tr">
+              <p class="f1 w100 "> <b> Periode </b></p>
+              <h4 class="w100 periode">2018-09-25 ~ 2018-10-24</h4>
+            </div>
+          </div>
+          <div class="border-b"></div>
+        </div>
+
+        <div class="flex-cc flex-ce  pr30 pl30 w100 " id="a2">
+          <div class="left w50 pb20">
+              <div class="flex-sb flex-wrap w100 mt-30 fb ">
+                <div class="">
+                    <h5>Nama</h5>
+                    <h5 class="mt-10">Pekerjaan</h5>
+                </div>
+                <div class="pr15">
+                    <h5 class="f-400 sp-nama">Wirawidana</h5>
+                    <h5 class="mt-10 f-400 sp-job">Programmer</h5>
+                </div>
+              </div>
+              <div class="border-r"></div>
+          </div>
+          <div class="right w50 pb20">
+            <div class="flex-cc flex-wrap tr">
+              <p class="f1 w100 f-400"> <b> Gaji Anda </b></p>
+              <h2 class="w100 sp-gaji">2.400.000</h2>
+            </div>
+          </div>
+          <div class="border-b"></div>
+        </div>
+
+        <div class="flex-cc flex-ce pr30 pl30 w100" id="a3">
+          <div class="left w50 pb20">
+            <h3 class="mt-20">Pendapatan</h3>
+            <div class="flex-sb flex-wrap w100 mt-20 fb pb20 ">
+              <div class="">
+                  <h5>Gaji Pokok</h5>
+                  <h5 class="mt-10">Lembur</h5>
+                  <h5 class="mt-10">Bonus</h5>
+              </div>
+              <div class="pr15 tr">
+                  <h5 class="f-400 sp-gajipokok">Wirawidana</h5>
+                  <h5 class="mt-10 f-400 sp-lembur">Programmer</h5>
+                  <h5 class="mt-10 f-400 sp-bonus">Programmer</h5>
+              </div>
+              <div class="border-b"></div>
+            </div>
+            <div class="w100 flex-sb flex-wrap mt-20">
+              <div>
+                <h5>Total (A)</h5>
+              </div>
+              <div class="pr15">
+                <h5 class="sp-pendapatan">3.000.000</h5>
+              </div>
+            </div>
+            <div class="border-r"></div>
+          </div>
+          <div class="right w50 pb20 box-s1">
+            <h3 class="mt-20 text-indent20">Potongan</h3>
+            <div class="flex-sb flex-wrap w100 mt-20 fb pb20">
+              <div class="text-indent20">
+                  <h5>Telat</h5>
+                  <h5 class="mt-10">Pelanggaran</h5>
+                  <h5 class="mt-10">Bon Kas</h5>
+              </div>
+              <div class=" tr">
+                  <h5 class="f-400 w100 sp-telat">Wirawidana</h5>
+                  <h5 class="mt-10 f-400 sp-pelanggaran">Programmer</h5>
+                  <h5 class="mt-10 f-400 sp-bon">Programmer</h5>
+              </div>
+              <div class="border-b"></div>
+            </div>
+            <div class="w100 flex-sb flex-wrap mt-20">
+              <div>
+                <h5 class="text-indent20">Total (B)</h5>
+              </div>
+              <div class="tr">
+                <h5 class="sp-potongan">3.000.000</h5>
+              </div>
+            </div>
+          </div>
+          <div class="border-b"></div>
+        </div>
+
+        <div class="flex-cc flex-ce pr30 pl30 w100" id="a4">
+          <div class="left w50 pb40">
+            <h3 class="mt-20">Penerimaan Bersih</h3>
+            <div class="flex-sb flex-wrap w100 mt-20 fb pb20 ">
+              <div class="">
+                  <h5>Total (A) + (B)</h5>
+              </div>
+              <div class="pr15">
+                  <h5 class="sp-gaji">Wirawidana</h5>
+              </div>
+            </div>
+            <div class="border-r"></div>
+          </div>
+          <div class="right w50 box-s1 pb20">
+            <div class="flex-cc flex-wrap tr">
+              <p class="f1 w100 "> <b> Denpasar, <span id="datenow"></span></b></p>
+              <p class="f1 w100 "> <b> Manager Operasional </b></p>
+              <p class="f1 w100 mt-55"> <b> Wiwin</b></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+      <div id="savemeok" class="flex-cc wh100">
+        <div class="nightmare-f"></div>
+        <img id="closescreen" src="img/close.1.svg" alt="">
+      </div>
+    </div>
+    <script src="js/html2canvas.min.js"></script>
+    <script src="js/my.js"></script>
+    <script src="js/excel.js"></script>
+    <script src="js/guidebot.js"></script>
+  </body>
+</html>
